@@ -3,7 +3,7 @@
 import java.util.Scanner;
 
 public class CheckingAccount implements HasMenu{
-	double balance = 100.0d;
+	double balance = 100.00;
 	private static final java.util.Scanner input = new java.util.Scanner(System.in);
 
 	//Create constructors
@@ -13,6 +13,7 @@ public class CheckingAccount implements HasMenu{
 	}//End constructor 
 
 	public CheckingAccount(double balance){
+		this.balance = balance;
 		this.start();
 	}//End double constructor
 
@@ -39,6 +40,7 @@ public class CheckingAccount implements HasMenu{
 			} //end exit condition
 			else if (menuResponse.equals("1")){
 				System.out.println("Checking balance...");
+				checkBalance();
 			} //end checkBalance condition
 			else if (menuResponse.equals("2")){
 				System.out.println("Making a deposit...");
@@ -58,8 +60,17 @@ public class CheckingAccount implements HasMenu{
 	} //end balance getter
 
 	public String getBalanceString(){
-		return String.format("$%,.2f", balance); 
+		return String.format("$%.2f", balance); 
 	} //end getBalanceString
+
+	public void setBalance(double balance){
+		this.balance = balance;
+	} //end setBalance()
+
+	public void checkBalance(){
+		String sBalance = getBalanceString();
+		System.out.println("Current Balance: " + sBalance);
+	} //end checkBalance
 
 
 } //end checkingAccount class
