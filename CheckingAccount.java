@@ -44,6 +44,7 @@ public class CheckingAccount implements HasMenu{
 			} //end checkBalance condition
 			else if (menuResponse.equals("2")){
 				System.out.println("Making a deposit...");
+				makeDeposit();
 			} //end makeDeposit condition
 			else if (menuResponse.equals("3")){
 				System.out.println("Making a withdrawal...");
@@ -71,6 +72,16 @@ public class CheckingAccount implements HasMenu{
 		String sBalance = getBalanceString();
 		System.out.println("Current Balance: " + sBalance);
 	} //end checkBalance
+	
+	public void makeDeposit(){
+		System.out.println("How much to deposit? ");
+		String sDepositAmt = input.nextLine();
+		int depositAmt = Integer.parseInt(sDepositAmt);
+		double balance = getBalance();
+		double newBalance = (balance + depositAmt);
+		setBalance(newBalance);
+		System.out.println("New Balance: " +  getBalanceString());
+	} //end makeDeposit()
 
 
 } //end checkingAccount class
