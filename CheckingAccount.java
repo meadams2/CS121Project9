@@ -48,6 +48,7 @@ public class CheckingAccount implements HasMenu{
 			} //end makeDeposit condition
 			else if (menuResponse.equals("3")){
 				System.out.println("Making a withdrawal...");
+				makeWithdrawal();
 			} //end makeWithdrawal condition
 		} //end while loop
 	} //end start()
@@ -83,6 +84,20 @@ public class CheckingAccount implements HasMenu{
 		System.out.println("New Balance: " +  getBalanceString());
 	} //end makeDeposit()
 
+	public void makeWithdrawal(){
+		System.out.println("How much to withdrawal? ");
+		String sWithdrawalAmt = input.nextLine();
+		int withdrawalAmt = Integer.parseInt(sWithdrawalAmt);
+		double balance = getBalance();
 
+		if (withdrawalAmt > balance){
+			System.out.println("Not enough money...");
+		} //end overdraft condition
+		else {
+			double newBalance = (balance - withdrawalAmt);
+			setBalance(newBalance);
+			System.out.println("New Balance: " + getBalanceString());
+		} //end withdraw
+	} //end makeWithdrawal
 } //end checkingAccount class
 
