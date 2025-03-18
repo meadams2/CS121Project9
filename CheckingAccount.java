@@ -52,5 +52,15 @@ public class CheckingAccount implements HasMenu{
 	public static void main(String[] args){
 		CheckingAccount c = new CheckingAccount();
 	} //end main()
+
+	public double getBalance(){
+		return balance;
+	} //end balance getter
+
+	public String getBalanceString(){
+		return String.format("$%,.2f", balance); 
+	} //end getBalanceString
+
+
 } //end checkingAccount class
 
