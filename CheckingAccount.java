@@ -12,7 +12,7 @@ public class CheckingAccount implements HasMenu{
 		this.start();
 	}//End constructor 
 
-	public CheckingAccount(balance){
+	public CheckingAccount(double balance){
 		this.start();
 	}//End double constructor
 
@@ -33,17 +33,17 @@ public class CheckingAccount implements HasMenu{
 		boolean keepGoing = true;
 		while(keepGoing){
 			String menuResponse = menu();
-			if (menuResponse.equals("0"){
+			if (menuResponse.equals("0")){
 				System.out.println("Exiting...");
 				keepGoing = false;
 			} //end exit condition
-			else if (menuResponse.equals("1"){
+			else if (menuResponse.equals("1")){
 				System.out.println("Checking balance...");
 			} //end checkBalance condition
-			else if (menuResponse.equals("2"){
+			else if (menuResponse.equals("2")){
 				System.out.println("Making a deposit...");
 			} //end makeDeposit condition
-			else if (menuResponse.equals("3"){
+			else if (menuResponse.equals("3")){
 				System.out.println("Making a withdrawal...");
 			} //end makeWithdrawal condition
 		} //end while loop
