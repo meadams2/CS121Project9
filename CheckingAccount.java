@@ -64,6 +64,18 @@ public class CheckingAccount implements HasMenu{
 	public String getBalanceString(){
 		return String.format("$%.2f", balance); 
 	} //end getBalanceString
+	
+	public double getDouble(){
+		String sResult = input.nextLine();
+		double result;
+		try {
+			result = Double.parseDouble(sResult);
+		} catch(Exception e){
+			System.out.println("Not a legal input. Changing to 0.");
+			result = 0d;
+		} 
+		return result;
+	} //end getDouble()
 
 	public void setBalance(double balance){
 		this.balance = balance;
@@ -76,26 +88,19 @@ public class CheckingAccount implements HasMenu{
 	
 	public void makeDeposit(){
 		System.out.println("How much to deposit? ");
-		String sDepositAmt = input.nextLine();
-		int depositAmt = Integer.parseInt(sDepositAmt);
-		double balance = getBalance();
-		double newBalance = (balance + depositAmt);
-		setBalance(newBalance);
-		System.out.println("New Balance: " +  getBalanceString());
+		double deposit = this.getDouble();
+		this.balance += deposit;
+		System.out.println("New Balance: " +  this.getBalanceString());
 	} //end makeDeposit()
 
 	public void makeWithdrawal(){
 		System.out.println("How much to withdrawal? ");
-		String sWithdrawalAmt = input.nextLine();
-		int withdrawalAmt = Integer.parseInt(sWithdrawalAmt);
-		double balance = getBalance();
-
-		if (withdrawalAmt > balance){
+		double withdrawal = this.getDouble();
+		if (withdrawal > balance){
 			System.out.println("Not enough money...");
 		} //end overdraft condition
 		else {
-			double newBalance = (balance - withdrawalAmt);
-			setBalance(newBalance);
+			this.balance -= withdrawal;
 			System.out.println("New Balance: " + getBalanceString());
 		} //end withdraw
 	} //end makeWithdrawal

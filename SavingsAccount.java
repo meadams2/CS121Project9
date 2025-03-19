@@ -14,7 +14,7 @@ class SavingsAccount extends CheckingAccount{
 		super(balance);
 		this.interestRate = interestRate;
 	} //End constructor
-
+//When I get to admin, test interest rate methods
 	public void setInterestRate(double interestRate){
 		this.interestRate = interestRate;
 	} //End interestRate setter
