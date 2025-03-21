@@ -64,7 +64,7 @@ public abstract class User implements HasMenu {
 		System.out.println("3) Change PIN");
 		System.out.print("Action (0-3):");
 		
-		menuResponse = input.nextLine;
+		menuResponse = input.nextLine();
 	} //End menu()
 
 	public void setUserName(String userName){
@@ -76,7 +76,7 @@ public abstract class User implements HasMenu {
 	} //End getUserName()
 
 	public void setPIN(String sPIN){
-		if (sPIN.matches("^\\d{4}$)){
+		if (sPIN.matches("^\\d{4}$")){
 			this.PIN = sPIN;
 		}
 		else{
