@@ -55,15 +55,15 @@ class Customer extends User {
 				} //End exit condition
 				else if(menuInput.equals("1")){
 					System.out.println("Checking Account");
-					//checking.start();
+					checking.start();
 				} //End Checking Account condition
 				else if(menuInput.equals("2")){
 					System.out.println("Savings Account");
-					//savings.start();
+					savings.start();
 				} //End Savings Account condition
 				else if(menuInput.equals("3")){
 					System.out.println("Change PIN.");
-					//this.changePin();
+					this.changePIN();
 				} //End Change PIN condition
 				else {
 					System.out.println("Invalid Input");
@@ -74,6 +74,19 @@ class Customer extends User {
 			System.out.println("Please login.");
 		} //End else	
 	} //End start()
+
+	public void changePIN(){
+		String pinResponse;
+		System.out.println("New PIN: ");
+		pinResponse = input.nextLine();
+		if(pinResponse.matches("^\\d{4}$")){
+			setPIN(pinResponse);
+			System.out.println("PIN Changed!");
+		} //User is smart...ish
+		else {
+			System.out.println("PIN must be 4 digits and numeric. PIN changed to 0000.");
+		} //User is not smart
+	} //End changePIN()
 
 	@Override
 	public String getReport(){
