@@ -14,8 +14,7 @@ public abstract class User implements HasMenu {
 		sPIN = input.nextLine();
 
 		if (sUsername.equals(this.userName)){
-			int lPIN = sPIN.length();
-			if (lPIN == 4){
+			if (sPIN.matches("^\\d{4}$")){
 				if (sPIN.equals(this.PIN)){
 					login = true;
 					System.out.println("Login Successful");
@@ -57,13 +56,15 @@ public abstract class User implements HasMenu {
 	} //End login(userName, PIN)
 	
 	public String menu(){
+		String menuResponse;
+
 		System.out.println("0) Exit");
 		System.out.println("1) Manage Checking Account");
 		System.out.println("2) Manage Savings Account");
 		System.out.println("3) Change PIN");
 		System.out.print("Action (0-3):");
 		
-		menuResposne = input.nextLine;
+		menuResponse = input.nextLine;
 	} //End menu()
 
 	public void setUserName(String userName){
@@ -74,8 +75,13 @@ public abstract class User implements HasMenu {
 		return this.userName;
 	} //End getUserName()
 
-	public void setPIN(String PIN){
-		this.PIN = PIN;
+	public void setPIN(String sPIN){
+		if (sPIN.matches("^\\d{4}$)){
+			this.PIN = sPIN;
+		}
+		else{
+			System.out.println("PIN must be numeric with 4 digits. Changing PIN to 0000.");
+		} 
 	} //End setPIN()
 
 	public void getPIN(){
