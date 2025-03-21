@@ -3,19 +3,31 @@
 import java.util.Scanner;
 
 public abstract class User implements HasMenu {
-	String userName = "";
-	String PIN = "";
+	protected String userName = "";
+	protected String PIN = "";
 	java.util.Scanner input = new java.util.Scanner(System.in);	
+	public User(){
+		this.userName = "";
+		this.PIN = "";
+	} //end constructor
+
+	public User(String userName, String PIN){
+		this.userName = userName;
+		this.PIN = PIN;
+	} //End dual parameter constructor
+		
 	public boolean login(){
 		boolean login; 
+		String sUsername;
+		String sPIN;
 		System.out.print("Username: ");
-		String sUsername = input.nextLine();
+		sUsername = input.nextLine();
 		System.out.print("PIN: ");
-		String sPIN = input.nextLine();
+		sPIN = input.nextLine();
 
-		if (sUsername.equals(this.userName)){
+		if (sUsername.equalsIgnoreCase(userName)){
 			if (sPIN.matches("^\\d{4}$")){
-				if (sPIN.equals(this.PIN)){
+				if (sPIN.equals(PIN)){
 					login = true;
 					System.out.println("Login Successful");
 				} //Correct PIN
@@ -38,8 +50,8 @@ public abstract class User implements HasMenu {
 
 	public boolean login(String userName, String PIN){
 		boolean login;
-		if (userName.equals(this.userName)){
-			if(PIN.equals(this.PIN)){
+		if (userName.equals(userName)){
+			if(PIN.equals(PIN)){
 				login = true;
 				System.out.println("Login Successful");
 			} //Correct PIN
@@ -74,12 +86,12 @@ public abstract class User implements HasMenu {
 	} //End setUserName()
 
 	public String getUserName(){
-		return this.userName;
+		return userName;
 	} //End getUserName()
 
 	public void setPIN(String sPIN){
 		if (sPIN.matches("^\\d{4}$")){
-			this.PIN = sPIN;
+			PIN = sPIN;
 		}
 		else{
 			System.out.println("PIN must be numeric with 4 digits. Changing PIN to 0000.");
@@ -87,7 +99,7 @@ public abstract class User implements HasMenu {
 	} //End setPIN()
 
 	public String getPIN(){
-		return this.PIN;
+		return PIN;
 	} //End getPIN()
 
 	public abstract String getReport();
