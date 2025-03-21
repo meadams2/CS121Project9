@@ -109,5 +109,124 @@ else:
 ```
 ### getBalanceString()
 
+```
+Utilizes String.format(). Want format "$00.00"
+```
+## Savings Account
+
+```
+class SavingsAccount extends CheckingAccount
+  ====================
+    double interestRate
+  ====================
+    main()
+    calcInterest()
+    void setInterestRate()
+    double getInterestRate()
+  ====================
+```
+### CalcInterest
+
+```
+Interest is calculated through dividing the interest rate by 100 to get a double and then multiplying the balance by that number.
+
+The interest is then added to the balance.
+```
+## User
+```
+abstract class User implements HasMenu, Serializable
+  ====================
+    string userName
+    string PIN
+  ====================
+    boolean login()
+    boolean login(userName, PIN)
+    void setUserName(userName)
+    string getUserName()
+    void setPIN(PIN)
+    string getPIN()
+    abstract string getReport()
+  ====================
+```
+The non-obvious functions are login(), login(userName, PIN), and setPIN(PIN).
+### Login()
+```
+Create boolean variable called login.
+Print "Username: ". Check for user input. Store input in String sUsername.
+Print "PIN: ". Check for user input. Store input in String sPIN.
+if sUsername == userName:
+    if sPIN == PIN:
+        login = true
+        Print "Login successful"
+    else:
+        Print "Incorrect PIN"
+        login = false
+  else:
+        login = false
+return login
+```
+Login(userName, PIN) is very similar, but instead of asking for user input, the userName and PIN are given as parameters. 
+
+### setPIN(sPIN)
+
+```
+Check if sPIN is a 4 digit numeric.
+If so, set PIN to sPIN.
+Otherwise, print "PIN must be numeric with 4 digits."
+```
+## Customer
+```
+class Customer extends User
+  ====================
+    CheckingAccount checking 
+    SavingsAccount savings 
+  ====================
+    void main()
+    Customer()
+    Customer(usernName, PIN)
+    void start()
+    string menu()
+    void changePin()
+    string getReport()
+  ====================
+```
+- Main() serves simply as a call to the constructor and to start the program.
+- The constructor initializes user and introduces the userName and PIN. The constructor also creates the Customer's checking account and savings account.
+- The menu prints out a menu and returns the user's response to the menu options.
+- start() acts as a traffic controller.
+- changePIN() changes the pin
+- getReport implements getReport from user and gets the customer report.
+
+### Start()
+```
+If login() returns true:
+    Initialize boolean keepGoing to true.
+    While keepGoing:
+        Call menu. Store in menuInput.
+        If menuInput == 0:
+            keepGoing = false
+        else if menuInput == 1:
+            checking.start()
+        else if menuInput == 2:
+            savings.start()
+        else if menuInput ==3:
+            changePIN()
+        else:
+            Print "Invalid input."
+```
+### changePIN()
+```
+Ask user for new PIN. Store in pinResponse.
+If pinReponse is 4 digit numeric:
+    set PIN to pinResponse
+    Print "PIN changed!"
+else:
+    Print "PIN must be 4 digits and numeric."
+```
+### getReport
+```
+Concatenate userName, checking balance, and savings balance. Store in userReport. 
+Return userReport.
+```
 
 
