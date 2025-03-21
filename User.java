@@ -9,9 +9,9 @@ public abstract class User implements HasMenu {
 	public boolean login(){
 		boolean login; 
 		System.out.print("Username: ");
-		sUsername = input.nextLine();
+		String sUsername = input.nextLine();
 		System.out.print("PIN: ");
-		sPIN = input.nextLine();
+		String sPIN = input.nextLine();
 
 		if (sUsername.equals(this.userName)){
 			if (sPIN.matches("^\\d{4}$")){
@@ -65,6 +65,8 @@ public abstract class User implements HasMenu {
 		System.out.print("Action (0-3):");
 		
 		menuResponse = input.nextLine();
+
+		return menuResponse;
 	} //End menu()
 
 	public void setUserName(String userName){
@@ -84,7 +86,7 @@ public abstract class User implements HasMenu {
 		} 
 	} //End setPIN()
 
-	public void getPIN(){
+	public String getPIN(){
 		return this.PIN;
 	} //End getPIN()
 

@@ -3,18 +3,19 @@
 import java.util.Scanner;
 
 public class CheckingAccount implements HasMenu{
-	double balance = 100.00;
+	double balance;
 	private static final java.util.Scanner input = new java.util.Scanner(System.in);
 
 	//Create constructors
 	
 	public CheckingAccount(){
-		this.start();
+		this.balance = 100d; 
+	//	this.start();
 	}//End constructor 
 
 	public CheckingAccount(double balance){
 		this.balance = balance;
-		this.start();
+	//	this.start();
 	}//End double constructor
 
 	//Implementing methods of HasMenu
